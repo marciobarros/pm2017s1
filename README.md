@@ -1,2 +1,2 @@
-# pm2017s1
-Curso de Programação Modular (BSI/UNIRIO, 2017.1)
+# pm2016s1
+Programas do curso de Programação Modular - BSI/UNIRIO 2006.1
