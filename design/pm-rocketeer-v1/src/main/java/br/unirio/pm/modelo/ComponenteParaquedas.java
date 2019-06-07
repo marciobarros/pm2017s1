@@ -17,10 +17,10 @@ public class ComponenteParaquedas extends Componente
 	/**
 	 * Inicializa o paraquedas
 	 */
-	public ComponenteParaquedas(Componente componenteAcima)
+	public ComponenteParaquedas(double diametro, double coeficienteArrasto)
 	{
-		super("paraquedas", componenteAcima);
-		this.coeficienteArrasto = 0.0;
+		super("paraquedas", diametro);
+		this.coeficienteArrasto = coeficienteArrasto;
 		this.ativado = false;
 	}
 	

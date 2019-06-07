@@ -19,7 +19,7 @@ public abstract class Componente
 	
 	private @Getter @Setter double diametro;
 	
-	private @Getter Componente componenteAcima;
+	private @Getter @Setter Componente componenteAcima;
 	
 	private @Getter @Setter Componente componenteAbaixo;
 	
@@ -28,12 +28,12 @@ public abstract class Componente
 	/**
 	 * Inicializa o componente abstrato, indicando seu tipo
 	 */
-	protected Componente(String tipo, Componente componenteAcima)
+	protected Componente(String tipo, double diametro)
 	{
 		this.tipo = tipo;
 		this.nome = "";
-		this.diametro = 0.0;
-		this.componenteAcima = componenteAcima;
+		this.diametro = diametro;
+		this.componenteAcima = null;
 		this.componenteAbaixo = null;
 		this.componentesLaterais = new ArrayList<Componente>();
 	}
@@ -48,7 +48,10 @@ public abstract class Componente
 		for (Componente componente : componentesLaterais)
 			massa += componente.getMassa();
 		
-		return massa + componenteAbaixo.getMassa();
+		if (componenteAbaixo != null)
+			massa += componenteAbaixo.getMassa();
+		
+		return massa;
 	}
 
 	/**
@@ -84,8 +87,17 @@ public abstract class Componente
 	/**
 	 * Adiciona um componente lateral ao componente
 	 */
-	public void adicionaComponente(Componente componente)
+	public void adicionaLateral(Componente componente) 
 	{
 		componentesLaterais.add(componente);
+	}
+
+	/**
+	 * Conecta um componente abaixo do componente atual
+	 */
+	public void conecta(Componente componenteAbaixo) 
+	{
+		this.componenteAbaixo = componenteAbaixo;
+		componenteAbaixo.setComponenteAcima(this);
 	}
 }

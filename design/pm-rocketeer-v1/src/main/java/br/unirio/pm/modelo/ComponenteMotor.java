@@ -15,9 +15,10 @@ public class ComponenteMotor extends Componente
 	/**
 	 * Inicializa o console
 	 */
-	public ComponenteMotor(Componente componenteAcima)
+	public ComponenteMotor(double diametro, double massaMotor)
 	{
-		super("console-motor", componenteAcima);
+		super("console-motor", diametro);
+		this.massaMotor = massaMotor;
 	}
 	
 	/**

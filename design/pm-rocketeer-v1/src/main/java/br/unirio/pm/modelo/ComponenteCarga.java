@@ -15,9 +15,10 @@ public class ComponenteCarga extends Componente
 	/**
 	 * Inicializa o componente de carga
 	 */
-	public ComponenteCarga(Componente componenteAcima)
+	public ComponenteCarga(double diametro, double massaCarga)
 	{
-		super("console-carga", componenteAcima);
+		super("console-carga", diametro);
+		this.massaCarga = massaCarga;
 	}
 	
 	/**

@@ -1,9 +1,6 @@
 package br.unirio.pm.modelo;
 
 import lombok.Getter;
-import lombok.Setter;
-
-// TODO fazer casos de teste para testar os cálculos
 
 /**
  * Classe que representa um foguete
@@ -12,49 +9,35 @@ import lombok.Setter;
  */
 public class Foguete extends Componente
 {
-	private @Getter ComponenteControle consoleControle;
-
-	private @Getter @Setter ComponenteParaquedas paraquedas;
+	private @Getter double massaModuloControle;
+	
+	private @Getter ComponenteParaquedas paraquedas;
 	
 	/**
 	 * Inicializa o foguete
 	 */
-	public Foguete()
+	public Foguete(double diametro, double massaModuloControle)
 	{
-		super("foguete", null);
-		this.consoleControle = new ComponenteControle(this);
-		this.setComponenteAbaixo(consoleControle);
+		super("foguete", diametro);
+		this.massaModuloControle = massaModuloControle;
+		this.paraquedas = null;
 	}
 
 	/**
-	 * Retorna a massa total do foguete
+	 * Retorna a massa interna do foguete
 	 */
-//	public double getMassa()
-//	{
-//		double massa = consoleControle.getMassa();
-//		
-//		if (paraquedas != null)
-//			massa += paraquedas.getMassa();
-//		
-//		return massa;
-//	}
-
-	/**
-	 * Retorna a área total do foguete
-	 */
-//	public double getArea()
-//	{
-//		double area = consoleControle.getArea();
-//		
-//		if (paraquedas != null)
-//			area = Math.max(area, paraquedas.getArea());
-//
-//		return area;
-//	}
-
 	@Override
 	protected double getMassaInterna() 
 	{
-		return 0;
+		return massaModuloControle;
+	}
+	
+	/**
+	 * Adiciona um paraquedas no foguete
+	 */
+	public void adicionaParaquedas(ComponenteParaquedas paraquedas)
+	{
+		this.paraquedas = paraquedas;
+		adicionaLateral(paraquedas);
 	}
 }
